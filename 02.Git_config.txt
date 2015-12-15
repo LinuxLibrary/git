@@ -92,3 +92,7 @@ file. We can do the same thing by editing this file too.
 
 	# git remote add -t <BRANCH> -f origin https://<username>@github.com/<username>/<repository>.git
 	# git remote add -t master -f origin https://vmsnivas@github.com/vmsnivas/bss.git
+
+11. List you Git configs
+
+	# git config --global --list

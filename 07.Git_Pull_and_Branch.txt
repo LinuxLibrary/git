@@ -1,0 +1,18 @@
+Working on Pull requests and Branches
+=====================================
+
+As we learnt that it would be always a good idea to work on branches and
+stop working on the master we'll need to generate a pull request once we
+are good to go with our code. So let us see how to work on branches.
+
+Create a branch:
+
+	# git branch feature1
+
+Switch to the new branch:
+
+	# git checkout feature1
+
+Now add some files to that branch and commit. After that generate a pull 
+request. From the main user try to review the changes and accept or rej-
+ect that pull request.

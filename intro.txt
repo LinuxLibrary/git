@@ -1,3 +1,4 @@
 # Introduction of users
 
 Arjun - Admin of Git Repo
+Pathan - User

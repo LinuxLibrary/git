@@ -1,4 +1,4 @@
-# Recovering data after deleting data using git rm
+# Recovering data after deleting data using "git rm" and "rm -rf"
 
 - Some times we might delete some data accidentally or else some times we might delete data as of our choice.
   But what ever the case might be we might need that data after some time in some cases. So in Such case we

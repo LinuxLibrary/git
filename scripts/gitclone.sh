@@ -2,14 +2,11 @@
 
 clear
 read -p "Input your GitHub login name: " USER
-# USER='vmsnivas'
 
 read -s -p "GitHub login password: " PASSWORD
-# PASSWORD='Admin_119'
 
 echo
 read -p "Input your GitHub org name: " ORG
-# ORG='LinuxLibrary'
 
 echo
 read -p "Input your fullname: " FULLNAME
@@ -96,7 +93,6 @@ for OPT in USER ORG
 do
 	case $OPT in 
 	USER)
-#		:> usercloneres.out
 		userrepos
 		if [[ ! -z $USER ]]
 		then
@@ -104,7 +100,6 @@ do
 		fi
 	;;
 	ORG)
-#		:> orgcloneres.out
 		orgrepos
 		if [[ ! -z $ORG ]]
 		then

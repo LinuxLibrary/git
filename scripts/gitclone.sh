@@ -2,14 +2,11 @@
 
 clear
 read -p "Input your GitHub login name: " USER
-# USER='vmsnivas'
 
 read -s -p "GitHub login password: " PASSWORD
-# PASSWORD='Admin_119'
 
 echo
 read -p "Input your GitHub org name: " ORG
-# ORG='LinuxLibrary'
 
 echo
 read -p "Input your fullname: " FULLNAME
@@ -41,7 +38,6 @@ function userrepos {
 	then
 		curl -s -u $USER:$PASSWORD https://api.github.com/users/$USER/repos > res.out
 		URLS=`more res.out | jq '.[] .clone_url'`
-#		CLONE_URLS=`echo $URLS | sed -ne 's/https:\/\//git+ssh:\/\/git@/p' | tr -d '"'`
 		for URL in `echo $URLS`
 		do
 			CLONE_URL=`echo $URL | sed -ne 's/https:\/\//git+ssh:\/\/git@/p' | tr -d '"'`
@@ -69,7 +65,6 @@ function orgrepos {
 	then
 		curl -s -u $USER:$PASSWORD https://api.github.com/orgs/$ORG/repos > res.out
 		URLS=`more res.out | jq '.[] .clone_url'`
-#		CLONE_URLS=`echo $URLS | sed -ne 's/https:\/\//git+ssh:\/\/git@/p' | tr -d '"'`
 		for URL in `echo $URLS`
 		do
 			CLONE_URL=`echo $URL | sed -ne 's/https:\/\//git+ssh:\/\/git@/p' | tr -d '"'`

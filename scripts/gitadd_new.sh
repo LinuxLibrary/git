@@ -46,7 +46,6 @@ function rename {
 function delete {
 	for i in `echo $D`
 	do
-#		git add $i
 		git commit -m "Removed $i"
 	done
 }

@@ -9,6 +9,6 @@ repository. After reviewing that person can accept or reject that request. If th
 changes will be merged to the main repository and committed.
 
 - Login to our git account
-- Click on the "Pull Request" button
-- Click on "Create Pull Request" button, enter some info regarding the pull
-- Click on "Send Pull Request" button.
+- Click on the ***Pull Request*** button
+- Click on ***Create Pull Request*** button, enter some info regarding the pull
+- Click on ***Send Pull Request*** button.

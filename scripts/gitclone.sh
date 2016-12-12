@@ -1,9 +1,5 @@
 #!/bin/bash
-# Author : Arjun Shrinivas
-# Purpose : This script will curl the User's GitHub account and also the Organization if provided.
-#	    After getting the result, corresponding directories will be created and repos will be cloned.
 
-# Get the GitHub user login name, password and Organization which the user belongs to.
 clear
 read -p "Input your GitHub login name: " USER
 
@@ -12,7 +8,6 @@ read -s -p "GitHub login password: " PASSWORD
 echo
 read -p "Input your GitHub org name: " ORG
 
-# Get and configure the User's full name and email for Global Git configs
 echo
 read -p "Input your fullname: " FULLNAME
 echo "Configuring Git user on $HOSTNAME"
@@ -21,7 +16,6 @@ read -p "Input your email: " EMAIL
 echo "Configuring Git email on $HOSTNAME"
 git config --global user.email "$EMAIL"
 
-# Create the corresponding directories
 echo
 for name in $USER $ORG
 do

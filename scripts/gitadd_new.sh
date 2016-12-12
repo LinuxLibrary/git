@@ -12,24 +12,24 @@ D=`git s | grep '^D\|^ D' | awk '{print $2}'`
 function add {
 	for i in `echo $A`
 	do
-		echo "Adding $i to staging..."
 		git add $i
+		git commit -m "Added $i"
 	done
 }
 
 function stgnew {
 	for i in `echo $U`
 	do
-		echo "Adding $i to staging..."
 		git add $i
+		git commit -m "Added $i"
 	done
 }
 
 function modify {
 	for i in `echo $M`
 	do
-		echo "Modifying $i and staging..."
 		git add $i
+		git commit -m "Modified $i"
 	done
 }
 
@@ -38,16 +38,19 @@ function rename {
 	do
 		R1=`git s | grep $i | awk '{print $2}'`
 		R2=`git s | grep $i | awk '{print $4}'`
-		echo "Renaming/Moving $R1 to $R2 and staging..."
 		git add $R2
+		git commit -m "Renamed/Moved $R1 to $R2"
 	done
 }
 
 function delete {
 	for i in `echo $D`
 	do
-		echo "Removing $i ..."
+<<<<<<< HEAD
+=======
 #		git add $i
+>>>>>>> 3fb7247b504f2f72272a4ebae165d1cb6ccf3453
+		git commit -m "Removed $i"
 	done
 }
 
@@ -75,6 +78,7 @@ else
 		;;
 		esac
 	done
+	git push -fu origin master
 fi
 
 # END

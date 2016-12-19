@@ -3,7 +3,7 @@
 # GIT Alias to status
 git config --global alias.s "status -s"
 
-A=`git s | grep '^A\|^AM\|^AR\|^AD^ A' | awk '{print $2}'`
+A=`git s | grep '^A\|^AM\|^AR\|^AD\|^ A' | awk '{print $2}'`
 U=`git s | grep ^? | awk '{print $2}'`
 M=`git s | grep '^M\|^MA\|^MR\|^MM\|^MD\|^ M' | awk '{print $2}'`
 R=`git s | grep '^R\|^RA\|^RM\|^RR\|^RD\|^ R' | awk '{print $4}'`

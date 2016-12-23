@@ -10,22 +10,31 @@ then
 fi
 
 #for i in `echo $(ls $REPODIR | tr -d '/')`
+echo -e "Updating ACCOUNT\t\t\tPUSH-STATUS\t\tPULL-STATUS"
 for i in `echo $(cd $REPODIR && find ./ -type d -name .git -exec echo {} \; | awk -F/.git$ '{print $1}' | awk -F^./ '{print $2}')`
 do
-	echo "Changing to $REPODIR/$i"
+#	echo "Changing to $REPODIR/$i"
 	cd $REPODIR/$i
 	GITURL=`git remote -v | grep fetch | awk '{print $2}'`
 	ACCOUNT=`echo $GITURL | awk -F.com/ '{print $2}' | awk -F.git$ '{print $1}'`
-	echo "Updating $ACCOUNT ..."
-	echo "Pulling all the changes from $GITURL <--- ..."
-	git pull -ff origin master > /dev/null
+#	echo "Updating $ACCOUNT ..."
+#	echo "Pulling all the changes from $GITURL <--- ..."
+	GPLOUT=$(git pull -ff origin master 2>&1)
+	if [[ ! -z $GPLOUT ]]
+	then
+		PULLOUT="COMMITS PULLED"
+	else
+		PULLOUT="UP-TO-DATE"
+	fi
 	PUSHCHK=`git lg | head -n1 | grep -v origin/master`
 	if [[ ! -z $PUSHCHK ]]
 	then
-		echo "Pushing all local commits to $GITURL ---> ..."
-		git push -fu origin master > /dev/null
+#		echo "Pushing all local commits to $GITURL ---> ..."
+		GPSOUT=$(git push -fu origin master 2>&1)
+		PUSHOUT="COMMITS PUSHED"
 	else
-		echo "ORIGIN is up-to date. No commits found to push!"
+#		echo "ORIGIN is up-to date. No commits found to push!"
+		PUSHOUT="UP-TO-DATE"
 	fi
-	echo
+	echo -e "Updating $ACCOUNT\t\t$PUSHOUT\t\t$PULLOUT"
 done

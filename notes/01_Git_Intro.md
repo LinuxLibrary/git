@@ -7,7 +7,7 @@
 
 - Step 2
 ------
-	Login to your Linux machine and create a direcotry for git
+	Login to your Linux machine and create a direcotry for Git to store all your Git Repos
 ```
 	# mkdir /git
 ```
@@ -20,56 +20,39 @@
 ```
 - Step 4
 ------
-	Go to that directory and create a new directory for your repository if you
-	have multiple branches within the repository in your git account.
-	Else you can add your repository directly.
+You can get your git repositories to your local machine in two ways
+- Go to the "/git" directory and clone your repository with the git URL.
+- Manually initialize git, add and set the url of the repository, fetch and pull.
 	
-	- Case 1: Repository with default branch or a single branch.
-		Go to your git directory
+	- Case 1: Go to your git directory and clone the repository
 ```
 		# cd /git
-```		
-		Update the origin of your repository
+		# git clone https://<username>@github.com/<account_name>/<repo_name>.git
 ```
+	  Example:
+```
+		# git clone https://bgomkar@github.com/bgomkar/testrepo.git
+		# git clone https://bgomkar@github.com/vmsnivas/testrepo2.git
+```		
+	- Case 2: Manually initialize git, add and set url, fetch and pull
+```
+		# cd /git
+		# mkdir <repo_name>
+		# cd <repo_name>
+		# git init
 		# git remote add -t <Branch_Name> -f origin https://<username>@github.com/<username>/<Repo_name>.git
-		# git remote add -t master -f origin https://vmsnivas@github.com/vmsnivas/ansible.git
+		# git remote set-url origin https://<username>@github.com/<username>/<Repo_name>.git
+		# git fetch
+		# git pull -ff origin <Branch_name>
 ```		
-		Clone your repository now.
-```
-		# git clone https://vmsnivas@github.com/vmsnivas/ansible.git
-```		
-	- Case 2: Repository with multiple branches.
-		Go to your git directory.
+	Example:
 ```
 		# cd /git
-```		
-		Create a direcotry with the name of the repository and child direcotries with the name of the branches you have.
-```
-		# mkdir -p <repo_name>/{branch1,branch2,....}
-		# mkdir -p python/{master,notes,programs}
-```		
-		Go to the repo dir and initialize git.
-```
-		# cd python
+		# mkdir testrepo
+		# cd testrepo
 		# git init
-```		
-		Set the origin of your repo.
-```
-		# git remote set-url origin https://<username>@github.com/<username>/<Repo_name>.git
-		# git remote set-url origin https://vmsnivas@github.com/vmsnivas/python.git
-```		
-		Go to one of your branches and initialize git.
-```
-		# cd master
-		# git init
-```		
-		Update the origin of your branch
-```
-		# git remote add -t branch1 -f origin https://<username>@github.com/<username>/<Repo_name>.git
-		# git remote add -t master -f origin https://vmsnivas@github.com/vmsnivas/python.git
-```		
-		Now clone the contents of that specific branch from the repo.
-```
-		# git clone -b branch1 https://<username>@github.com/<username>/<Repo_name>.git
-		# git clone -b master https://vmsnivas@github.com/vmsnivas/python.git
+		# git remote add -t master -f origin https://bgomkar@github.com/bgomkar/testrepo.git
+		# git remote set-url origin https://bgomkar@github.com/bgomkar/testrepo.git
+		# git fetch
+		# git pull -ff origin master
 ```

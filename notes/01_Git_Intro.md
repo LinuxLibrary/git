@@ -29,12 +29,14 @@ You can get your git repositories to your local machine in two ways
 		# cd /git
 		# git clone https://<username>@github.com/<account_name>/<repo_name>.git
 ```
+-----
 
 	  Example:
 ```
 		# git clone https://bgomkar@github.com/bgomkar/testrepo.git
 		# git clone https://bgomkar@github.com/vmsnivas/testrepo2.git
 ```		
+-----
 
 	- Case 2: Manually initialize git, add and set url, fetch and pull
 ```
@@ -47,6 +49,7 @@ You can get your git repositories to your local machine in two ways
 		# git fetch
 		# git pull -ff origin <Branch_name>
 ```
+-----
 		
 	Example:
 ```
@@ -59,3 +62,4 @@ You can get your git repositories to your local machine in two ways
 		# git fetch
 		# git pull -ff origin master
 ```
+-----

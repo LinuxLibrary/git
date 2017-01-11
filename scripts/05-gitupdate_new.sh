@@ -31,11 +31,13 @@ do
 		GPSOUT=$(git push -fu origin master 2>&1)
 		GPSSUCCESS=$(echo $GPSOUT | grep "To.*git$")
 		GPSDENIED=$(echo $GPSOUT | grep "Permission.*denied")
+		WARNFILE="/tmp/gitwarn.tmp"
 		if [[ ! -z $GPSSUCCESS ]]
 		then
 			PUSHOUT="COMMITS-PUSHED"
 		elif [[ ! -z $GPSDENIED ]]
 		then
+			echo -e "$GPSDENIED" >> $WARNFILE
 			PUSHOUT="ACCESS_DENIED"
 		fi
 	else
@@ -43,3 +45,10 @@ do
 	fi
 	echo  "Updating $ACCOUNT $PUSHOUT $PULLOUT" | awk '{printf "%-10s %-65s %-15s %-15s\n",$1,$2,$3,$4}'
 done
+
+if [[ ! -z $WARNFILE ]]
+then
+	echo
+	more $WARNFILE
+	rm -rf $WARNFILE
+fi

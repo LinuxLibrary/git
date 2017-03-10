@@ -48,10 +48,16 @@ function userrepos {
 				cd $USERREPOS/$REPONAME
 				git init >> usercloneres.out 2>&1
 				git remote add -f origin $CLONE_URL >> usercloneres.out 2>&1
-				git remote set-url origin $CLONE_URL >> usercloneres.out 2>&1
-				git pull -ff origin master >> usercloneres.out 2>&1
-				UREPOCOUNT=`expr $UREPOCOUNT + 1`
-				echo -e "Cloned $USER/$REPONAME successfully!"
+				if [ $? -ne '0']
+				then
+					echo -e "$USER/$REPONAME \e[5m\e[32mACCESS DENIED\e[49m : Export RSA key to GitHub"
+				else
+				then
+					git remote set-url origin $CLONE_URL >> usercloneres.out 2>&1
+					git pull -ff origin master >> usercloneres.out 2>&1
+					UREPOCOUNT=`expr $UREPOCOUNT + 1`
+					echo -e "Cloned $USER/$REPONAME successfully!"
+				fi
 			else
 				echo "Ignoring $USER/$REPONAME as repository exists!"
 			fi
@@ -75,10 +81,16 @@ function orgrepos {
 				cd $ORGREPOS/$REPONAME
 				git init >> orgcloneres.out 2>&1
 				git remote add -f origin $CLONE_URL >> orgcloneres.out 2>&1
-				git remote set-url origin $CLONE_URL >> orgcloneres.out 2>&1
-				git pull -ff origin master >> orgcloneres.out 2>&1
-				echo -e "Cloned $ORG/$REPONAME successfully!"
-				OREPOCOUNT=`expr $OREPOCOUNT + 1`
+                                if [ $? -ne '0']
+                                then
+                                        echo -e "$USER/$REPONAME \e[5m\e[32mACCESS DENIED\e[49m : Export RSA key to GitHub"
+                                else
+                                then
+					git remote set-url origin $CLONE_URL >> orgcloneres.out 2>&1
+					git pull -ff origin master >> orgcloneres.out 2>&1
+					echo -e "Cloned $ORG/$REPONAME successfully!"
+					OREPOCOUNT=`expr $OREPOCOUNT + 1`
+				fi
 			else
 				echo "Ignoring $ORG/$REPONAME as repository exists!"
 			fi

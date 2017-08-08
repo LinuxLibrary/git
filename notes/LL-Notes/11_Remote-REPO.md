@@ -2,7 +2,7 @@
 
 - We can create repositories from our local machine.
 - For this we need to use the GitHub API. We need to curl the API and provide the username and repo name.
-- User Repos through APIv2
+- User Repos
 
 	```
 	curl -u <USER_NAME> https://api.github.com/user/repos -d '{"name":"<REPO_NAME>"}'
@@ -12,12 +12,6 @@
 
 	```
 	git clone git+ssh://git@github.com/<ACCOUNT_NAME>/<REPO_NAME>.git
-	```
-
-- User Repos through APIv3
-
-	```
-	curl -u <USER_NAME> https://api.github.com/user/repos -d '{"name":"<REPO_NAME>"}'
 	```
 
 - Org Repos

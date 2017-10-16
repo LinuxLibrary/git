@@ -1,6 +1,6 @@
 #!/bin/bash
 
-for i in {00..08}
+for i in {00..09}
 do
 	if [[ $(expr $i % 2) -eq 0 ]]
 	then

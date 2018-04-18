@@ -25,3 +25,11 @@
 	```
 	git clone git+ssh://git@github.com/<ORG_NAME>/<REPO_NAME>.git
 	```
+
+# Delete a remote repository
+
+- User Repos
+
+	```
+	# curl -u vmsnivas -X DELETE https://api.github.com/repos/vmsnivas/test
+	```
